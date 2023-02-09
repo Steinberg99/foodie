@@ -1,0 +1,136 @@
+/* Fonts */
+
+@font-face {
+  font-family: "W95FA";
+  src: url("../fonts/w95fa.woff");
+}
+
+/* General styling */
+
+:root {
+  --black: #000000;
+  --blue: #000077;
+  --dark-gray: #7b7d7b;
+  --gray: #c0c0c0;
+  --light-gray: #c3c3c3;
+  --green: #3a8383;
+  --white: #ffffff;
+
+  --box-shadow: 1px 1px #000;
+}
+
+*,
+html {
+  box-sizing: border-box;
+
+  padding: 0;
+  margin: 0;
+
+  font-family: "W95FA";
+  font-size: 16px;
+  line-height: 1;
+
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+
+  height: 100vh;
+  margin: 0;
+
+  background-color: var(--green);
+}
+
+li {
+  list-style-type: none;
+}
+
+.border {
+  border-top: 1px solid var(--white);
+  border-left: 1px solid var(--white);
+  border-bottom: 1px solid var(--dark-gray);
+  border-right: 1px solid var(--dark-gray);
+}
+
+/* Components */
+
+.apps {
+  display: flex;
+  flex-direction: column;
+
+  width: fit-content;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 70px;
+  padding: 0.5rem 0;
+}
+
+.app > img {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.app > p {
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+
+  color: var(--white);
+}
+
+button.app {
+  border: 0;
+
+  background-color: transparent;
+}
+
+.biography {
+  pointer-events: all !important;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100px;
+  height: 100px;
+
+  background-color: var(--gray);
+}
+
+/* Footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 2.375rem;
+  padding-left: 0.25rem;
+  border-top: 0.125rem solid var(--white);
+
+  background-color: var(--gray);
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+
+  padding: 0.25rem;
+  box-shadow: var(--box-shadow);
+}
+
+.start-button > img {
+  width: 1.125rem;
+  height: 1.125rem;
+
+  margin-right: 0.25rem;
+}
