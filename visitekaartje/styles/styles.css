@@ -53,6 +53,13 @@ li {
   border-right: 1px solid var(--dark-gray);
 }
 
+.border-inset {
+  border-top: 1px solid var(--dark-gray);
+  border-left: 1px solid var(--dark-gray);
+  border-bottom: 1px solid var(--white);
+  border-right: 1px solid var(--white);
+}
+
 /* Components */
 
 .apps {
@@ -90,17 +97,86 @@ button.app {
   background-color: transparent;
 }
 
-.biography {
+.notes {
   pointer-events: all !important;
 
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 25%;
+  left: 25%;
 
-  width: 100px;
-  height: 100px;
+  width: 50%;
+  height: 50%;
+  box-shadow: var(--box-shadow);
 
   background-color: var(--gray);
+}
+
+.notes > div:first-child {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0.125rem;
+  margin: 0.125rem;
+
+  background-color: var(--blue);
+}
+
+.notes > div:first-child {
+  color: var(--white);
+}
+
+.notes > div > ul {
+  display: flex;
+
+  column-gap: 0.125rem;
+}
+
+.notes > div > ul > li > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1rem;
+  height: 1rem;
+}
+
+.notes-content {
+  height: calc(100% - 1.5rem);
+  padding: 0.5rem;
+  margin-right: 0.125rem;
+
+  overflow-y: scroll;
+}
+
+.notes-content > img {
+  width: 50%;
+  margin-bottom: 1rem;
+}
+
+.notes-content > div:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.notes-content > div > h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-top: 1px solid var(--white);
+  border-left: 1px solid var(--white);
+  border-bottom: 1px solid var(--dark-gray);
+  border-right: 1px solid var(--dark-gray);
 }
 
 /* Footer */
@@ -125,6 +201,7 @@ footer {
   align-items: center;
 
   padding: 0.25rem;
+  margin-right: 0.5rem;
   box-shadow: var(--box-shadow);
 }
 
@@ -132,5 +209,23 @@ footer {
   width: 1.125rem;
   height: 1.125rem;
 
+  margin-right: 0.25rem;
+}
+
+footer > nav > ul {
+  display: flex;
+}
+
+footer > nav > ul > li > button {
+  display: flex;
+  align-items: center;
+
+  padding: 0.25rem;
+  border-radius: 0;
+}
+
+footer > nav > ul > li > button > img {
+  width: 1.125rem;
+  height: 1.125rem;
   margin-right: 0.25rem;
 }
