@@ -243,4 +243,8 @@ footer > nav > ul > li > div > img {
 
     width: 80%;
   }
+
+  .notes-content > img {
+    width: 100%;
+  }
 }
