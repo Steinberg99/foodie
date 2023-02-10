@@ -216,18 +216,23 @@ footer > nav > ul {
   display: flex;
 }
 
-footer > nav > ul > li > button {
+footer > nav > ul > li > div {
   display: flex;
   align-items: center;
 
   padding: 0.25rem;
-  border-radius: 0;
 }
 
-footer > nav > ul > li > button > img {
+footer > nav > ul > li > div > img {
   width: 1.125rem;
   height: 1.125rem;
   margin-right: 0.25rem;
+}
+
+/* Javascript classes */
+
+.hidden {
+  display: none;
 }
 
 /* Responsive  */

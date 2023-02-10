@@ -5,8 +5,6 @@ const id = "cldeozsp33vc90bw53gqzjjti";
 const init = async () => {
   const data = await fetchData(id);
 
-  console.log(data);
-
   setData(data);
 };
 
