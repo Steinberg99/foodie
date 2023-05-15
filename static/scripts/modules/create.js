@@ -85,11 +85,18 @@ export const createProducts = (products) => {
     const link = document.createElement("a");
     link.href = `/#product/${product._id}`;
     const img = document.createElement("img");
-    img.src = product.image_url;
+
+    if (product.image_url) {
+      img.src = product.image_url;
+    }
+
     const paragraph = document.createElement("p");
     paragraph.textContent = product.product_name;
 
-    link.appendChild(img);
+    if (product.image_url) {
+      link.appendChild(img);
+    }
+
     link.appendChild(paragraph);
     listItem.appendChild(link);
     productList.appendChild(listItem);
