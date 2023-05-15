@@ -5,29 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foodie</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./static/css/styles.css" />
   </head>
   <body>
-    <main>
-      <section>
-        <video src=""></video>
+    <header>
+      <a class="logo" href="#home">foodie!</a>
 
-        <button class="open-overlay-button">Search button</button>
-      </section>
+      <div>
+        <form class="product-form">
+          <label class="visibly-hidden" for="barcode">Barcode</label>
 
-      <section class="overlay">
-        <button class="close-overlay-button">
-          <img src="./img/icon-close.svg" />
-        </button>
+          <input id="barcode" class="product-input" type="text" name="barcode" placeholder="Barcode" />
 
-        <div class="overlay-content"></div>
-      </section>
-    </main>
+          <button type="submit">Search</button>
+        </form>
 
-    <script src="./scripts/index.js"></script>
+        <form class="products-form">
+          <label class="visibly-hidden" for="product">Product name</label>
 
-    <script src="./scripts/create.js"></script>
+          <input id="product" class="products-input" type="text" name="product" placeholder="Product name" />
 
-    <script src="./scripts/overlay.js"></script>
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </header>
+
+    <main class="app"></main>
+
+    <script src="./static/scripts/lib/routie.min.js"></script>
+    <script type="module" src="./static/scripts/app.js"></script>
   </body>
 </html>
