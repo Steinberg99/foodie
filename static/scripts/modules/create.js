@@ -24,8 +24,6 @@ export const createCamera = async () => {
   window.setInterval(async () => {
     const barcodes = await barcodeDetector.detect(camera);
 
-    console.log(barcodes);
-
     if (barcodes.length <= 0) return;
 
     window.location.hash = "#product/" + barcodes[0].rawValue;
