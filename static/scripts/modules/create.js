@@ -1,3 +1,5 @@
+import { checkPreviousNextPage } from "./helpers.js";
+
 const app = document.querySelector(".app");
 
 export const createCamera = async () => {
@@ -45,6 +47,53 @@ export const createProduct = (product) => {
   app.appendChild(paragraph);
 };
 
-export const createPagination = () => {};
+export const createPagination = (pageNumber, productName, productCount) => {
+  const previousNextPage = checkPreviousNextPage(productCount, 24, pageNumber);
+  const productCountElem = document.createElement("p");
+  productCountElem.textContent = `${productCount} results`;
 
-export const createProducts = () => {};
+  app.appendChild(productCountElem);
+
+  if (previousNextPage.hasNextPage || previousNextPage.hasPreviousPage) {
+    const paginationWrapper = document.createElement("div");
+
+    if (previousNextPage.hasNextPage) {
+      const nextPageLink = document.createElement("a");
+      nextPageLink.textContent = "Next page";
+      nextPageLink.href = `/#products/${productName}&${pageNumber + 1}`;
+
+      paginationWrapper.appendChild(nextPageLink);
+    }
+
+    if (previousNextPage.hasPreviousPage) {
+      const previousPageLink = document.createElement("a");
+      previousPageLink.textContent = "Previous page";
+      previousPageLink.href = `/#products/${productName}&${pageNumber - 1}`;
+
+      paginationWrapper.appendChild(previousPageLink);
+    }
+
+    app.appendChild(paginationWrapper);
+  }
+};
+
+export const createProducts = (products) => {
+  const productList = document.createElement("ul");
+
+  products.forEach((product) => {
+    const listItem = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = `/#product/${product._id}`;
+    const img = document.createElement("img");
+    img.src = product.image_url;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = product.product_name;
+
+    link.appendChild(img);
+    link.appendChild(paragraph);
+    listItem.appendChild(link);
+    productList.appendChild(listItem);
+  });
+
+  app.appendChild(productList);
+};

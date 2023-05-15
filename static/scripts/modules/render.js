@@ -67,8 +67,8 @@ export const renderProducts = async (productName, pageNumber) => {
 
   skeletonsWrapper.innerHTML = ""; // Remove skeletons
 
-  if (productsData) {
-    createPagination(checkPreviousNextPage(productsData.count));
+  if (productsData.products.length !== 0) {
+    createPagination(pageNumber, productName, productsData.count);
     createProducts(productsData.products);
   } else {
     renderProductsError();

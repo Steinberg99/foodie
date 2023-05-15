@@ -5,4 +5,5 @@ export const constants = {
   homeLinkContent: "Scan barcode",
   barcodeTitleContent: "Scan barcode",
   barcodeParagraphContent: "Please place the barcode within the frame. Refrain from shaking to get results more quickly.",
+  errorMessage: "We're sorry, but the product you entered is not available in our database.",
 };
