@@ -45,34 +45,11 @@ export const createProduct = (product) => {
   app.appendChild(paragraph);
 };
 
-export const createPagination = (pageNumber, productName, productCount) => {
-  const previousNextPage = checkPreviousNextPage(productCount, 24, pageNumber);
+export const createProductCount = (productCount) => {
   const productCountElem = document.createElement("p");
   productCountElem.textContent = `${productCount} results`;
 
   app.appendChild(productCountElem);
-
-  if (previousNextPage.hasNextPage || previousNextPage.hasPreviousPage) {
-    const paginationWrapper = document.createElement("div");
-
-    if (previousNextPage.hasNextPage) {
-      const nextPageLink = document.createElement("a");
-      nextPageLink.textContent = "Next page";
-      nextPageLink.href = `/#products/${productName}&${pageNumber + 1}`;
-
-      paginationWrapper.appendChild(nextPageLink);
-    }
-
-    if (previousNextPage.hasPreviousPage) {
-      const previousPageLink = document.createElement("a");
-      previousPageLink.textContent = "Previous page";
-      previousPageLink.href = `/#products/${productName}&${pageNumber - 1}`;
-
-      paginationWrapper.appendChild(previousPageLink);
-    }
-
-    app.appendChild(paginationWrapper);
-  }
 };
 
 export const createProducts = (products) => {
@@ -101,4 +78,31 @@ export const createProducts = (products) => {
   });
 
   app.appendChild(productList);
+};
+
+export const createPagination = (pageNumber, productName, productCount) => {
+  const previousNextPage = checkPreviousNextPage(productCount, 24, pageNumber);
+
+  if (previousNextPage.hasNextPage || previousNextPage.hasPreviousPage) {
+    const paginationWrapper = document.createElement("div");
+    paginationWrapper.classList.add("pagination-wrapper");
+
+    if (previousNextPage.hasNextPage) {
+      const nextPageLink = document.createElement("a");
+      nextPageLink.textContent = "Next page";
+      nextPageLink.href = `/#products/${productName}&${parseInt(pageNumber) + 1}`;
+
+      paginationWrapper.appendChild(nextPageLink);
+    }
+
+    if (previousNextPage.hasPreviousPage) {
+      const previousPageLink = document.createElement("a");
+      previousPageLink.textContent = "Previous page";
+      previousPageLink.href = `/#products/${productName}&${parseInt(pageNumber) - 1}`;
+
+      paginationWrapper.appendChild(previousPageLink);
+    }
+
+    app.appendChild(paginationWrapper);
+  }
 };

@@ -2,13 +2,21 @@ import { constants } from "./constants.js";
 
 const app = document.querySelector(".app");
 
-export const renderSkeletons = (skeletonsWrapper) => {
+export const renderProductsLoadingState = () => {
+  const skeletonsWrapper = document.createElement("div");
+  skeletonsWrapper.classList.add("skeletons-wrapper");
+  const loadingText = document.createElement("p");
+  loadingText.textContent = "Loading...";
+
   for (let i = 0; i < 24; i++) {
     const skeleton = document.createElement("div");
     skeleton.classList.add("skeleton");
 
     skeletonsWrapper.appendChild(skeleton);
   }
+
+  app.appendChild(loadingText);
+  app.appendChild(skeletonsWrapper);
 };
 
 export const renderProductError = () => {
@@ -19,6 +27,7 @@ export const renderProductError = () => {
   paragraph.textContent = constants.errorMessage;
 
   app.appendChild(title);
+  app.appendChild(paragraph);
 };
 
 export const renderProductsError = () => {

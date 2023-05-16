@@ -1,11 +1,9 @@
 import { getProductByBarcode, getProductsByNameAndPageNumber } from "./api.js";
 import { constants } from "./constants.js";
-import { createCamera, createProduct, createPagination, createProducts } from "./create.js";
-import { checkPreviousNextPage } from "./helpers.js";
-import { renderProductError, renderProductsError, renderSkeletons } from "./states.js";
+import { createCamera, createProduct, createProductCount, createProducts, createPagination } from "./create.js";
+import { renderProductError, renderProductsError, renderProductsLoadingState } from "./states.js";
 
 const app = document.querySelector(".app");
-const skeletonsWrapper = document.querySelector(".skeletons-wrapper");
 
 export const renderHome = () => {
   app.innerHTML = ""; // Reset app
@@ -58,18 +56,21 @@ export const renderProducts = async (productName, pageNumber) => {
   const title = document.createElement("h1");
   title.textContent = `Search results for ${productName}`;
 
-  const skeletonsWrapper = document.createElement("div");
-  app.appendChild(skeletonsWrapper);
+  app.appendChild(title);
 
-  renderSkeletons(skeletonsWrapper);
+  renderProductsLoadingState();
 
   const productsData = await getProductsByNameAndPageNumber(productName, pageNumber);
 
-  skeletonsWrapper.innerHTML = ""; // Remove skeletons
+  // Remove all children except the first
+  while (app.childNodes.length > 1) {
+    app.removeChild(app.lastChild);
+  }
 
   if (productsData.products.length !== 0) {
-    createPagination(pageNumber, productName, productsData.count);
+    createProductCount(productsData.count);
     createProducts(productsData.products);
+    createPagination(pageNumber, productName, productsData.count);
   } else {
     renderProductsError();
   }
